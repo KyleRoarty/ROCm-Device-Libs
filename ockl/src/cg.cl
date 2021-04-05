@@ -86,7 +86,7 @@ __ockl_grid_sync(void)
         uint nwm1 = (uint)__ockl_get_num_groups(0) * (uint)__ockl_get_num_groups(1) * (uint)__ockl_get_num_groups(2) - 1;
         __ockl_gws_barrier(nwm1, 0);
     }
-    __builtin_amdgcn_s_barrier();
+    __builtin_amdgcn_s_barrier(0);
 }
 
 __attribute__((const)) uint
@@ -132,7 +132,7 @@ __ockl_multi_grid_sync(void)
     if (cwwi)
         __ockl_gws_barrier(nwm1, 0);
 
-    __builtin_amdgcn_s_barrier();
+    __builtin_amdgcn_s_barrier(0);
 
     if (choose_one_grid_workitem()) {
         __constant struct mg_info *m = (__constant struct mg_info *)get_mg_info_arg();
@@ -142,6 +142,6 @@ __ockl_multi_grid_sync(void)
     if (cwwi)
         __ockl_gws_barrier(nwm1, 0);
 
-    __builtin_amdgcn_s_barrier();
+    __builtin_amdgcn_s_barrier(0);
 }
 

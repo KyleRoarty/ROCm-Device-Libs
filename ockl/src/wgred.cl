@@ -44,7 +44,7 @@ static void
 my_barrier(void)
 {
     __llvm_fence_rel_wg();
-    __builtin_amdgcn_s_barrier();
+    __builtin_amdgcn_s_barrier(0);
     __llvm_fence_acq_wg();
 }
 
